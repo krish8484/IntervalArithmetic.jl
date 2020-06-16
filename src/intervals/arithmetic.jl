@@ -66,11 +66,11 @@ typemax(::Type{Interval{T}}) where T<:Integer = Interval(typemax(T))
 +(a::Interval) = a
 -(a::Interval) = Interval(-a.hi, -a.lo)
 
-function +(a::Interval{T}, b::T) where {T<:Real}
+function +(a::Interval{T}, b::S) where {T, S<:Real}
     isempty(a) && return emptyinterval(T)
     @round(a.lo + b, a.hi + b)
 end
-+(b::T, a::Interval{T}) where {T<:Real} = a+b
++(b::S, a::Interval{T}) where {T, S<:Real} = a+b
 
 function -(a::Interval{T}, b::T) where {T<:Real}
     isempty(a) && return emptyinterval(T)
