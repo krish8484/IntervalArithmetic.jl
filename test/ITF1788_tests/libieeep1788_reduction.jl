@@ -55,7 +55,7 @@ end
 
 @testset "minimal_dot_test" begin
     @test vector_dot([1.0, 2.0, 3.0], [1.0, 2.0, 3.0], RoundNearest) == 14.0
-    # @test vector_dot([0x10000000000001p0, 0x1p104], [0x0fffffffffffffp0, -1.0], RoundNearest) == -1.0 ## 0.0
+    @test vector_dot([0x10000000000001p0, 0x1p104], [0x0fffffffffffffp0, -1.0], RoundNearest) == -1.0 ## 0.0
     @test isnan(vector_dot([1.0, 2.0, NaN, 3.0], [1.0, 2.0, 3.0, 4.0], RoundNearest))
     @test isnan(vector_dot([1.0, 2.0, 3.0, 4.0], [1.0, 2.0, NaN, 3.0], RoundNearest))
     @test isnan(vector_dot([1.0, 2.0, 0.0, 4.0], [1.0, 2.0, Inf, 3.0], RoundNearest))
